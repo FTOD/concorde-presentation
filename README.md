@@ -1,8 +1,9 @@
 # Concorde presentation
 
-Slides on Concorde's design and the reasons behind it, built with [Slidev](https://sli.dev).
-`concorde/` is a git submodule of [FTOD/concorde](https://github.com/FTOD/concorde), the reference
-every slide is drawn from.
+Slides on how Concorde got its design — the problems met while building it, the approaches tried,
+and what was kept and why — built with [Slidev](https://sli.dev). `concorde/` is a git submodule of
+[FTOD/concorde](https://github.com/FTOD/concorde), the reference every slide is drawn from; each
+slide's speaker notes cite the commits and Specs behind it.
 
 ```bash
 git submodule update --init
@@ -10,8 +11,16 @@ npm install
 npm run dev                       # live preview with hot reload, http://localhost:3030
 npm run export                    # PDF (needs playwright-chromium, already a dev dependency)
 npx slidev export --format png --output preview   # one PNG per slide, for review
+npx tahta-lint slides.md          # check the deck against the theme's layout contract
 ```
 
-- `slides.md` holds the deck; each slide's frontmatter can set `layout`, `zoom` or `class`.
-- `style.css` holds the shared styles (context cards, level bands, workflow steps).
+- The deck uses [tahta](https://tahta.cagdas.io) (`slidev-theme-tahta`) in its `brutalist` variant.
+  Slides pick a tahta `layout` and fill its frontmatter; there is no custom slide styling. The
+  theme's contract is `node_modules/slidev-theme-tahta/AGENTS.md`.
+- Diagrams are D2, as in Concorde's own Specs. A ```` ```d2 {h: 300, layout: elk} ```` block is
+  rendered at build time by `setup/transformers.ts`, which needs the `d2` CLI on `PATH`
+  (https://d2lang.com). It prepends a brutalist palette and the node classes `agent`, `program`,
+  `rejected`, `chosen`, `layer` and `note`, draws in Space Mono (`fonts/`, SIL Open Font License),
+  and caches rendered SVGs in `.slidev/d2-cache`. `style.css` only sizes these diagrams.
+  `tahta-lint` warns that `diagram` slides have no Mermaid block; that is expected.
 - To follow a newer Concorde, `git -C concorde pull origin main` and commit the submodule bump.
