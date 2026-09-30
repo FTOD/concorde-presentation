@@ -182,3 +182,28 @@ Domain/Service/Module kinds → one Module kind (Sep 6–9); 15 Protocol major v
 Not all of it was waste — the early attempts taught what to keep. Attributing the wrong turns to leaning on AI for the architecture
 is my judgment, not something the history records.
 -->
+
+---
+layout: reference
+kicker: Takeaways for research
+title: What this means for <em>our</em> work
+items:
+  - { term: Not a cure-all, desc: "Concorde targets software engineering — and doesn't solve it perfectly" }
+  - { term: Research explores too, desc: "no concrete result to aim at up front — we find the way as we go" }
+  - { term: Split the work, desc: "“I know what and roughly how” → let AI loop · “I have a direction” → explore together, keep following up" }
+  - { term: Ask for evidence, desc: "never take an AI's conclusion at its word" }
+  - { term: Own the architecture, desc: "think, ask AI, and cut until each part's result is observable — then how AI got there doesn't matter" }
+---
+
+<!--
+1. Concorde does not solve everything: it addresses problems of software engineering, and even there not perfectly.
+2. Research often faces the same situation as building Concorde: there is no clear, concrete result specified in advance;
+   we explore and move forward in the process.
+3. Do try loops — but first split what you want into two kinds:
+   - "I only need AI to implement it: I know clearly what to do and roughly how" → hand it over, let it loop.
+   - "I have a rough direction and want AI to explore with me" → a completely different way of working: you follow up
+     continuously; don't expect the AI to finish it on its own.
+4. Don't believe an AI's conclusion easily — always ask it for the evidence (the same rule as "done is a claim").
+5. Ask AI a lot, think a lot, and settle the architecture yourself. Cut the work until each part's result is observable by a
+   human: "as long as AI delivers this, I don't need to care how it did it inside".
+-->
