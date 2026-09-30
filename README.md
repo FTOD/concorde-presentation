@@ -11,9 +11,14 @@ npm install
 npm run dev                       # live preview with hot reload, http://localhost:3030
 npm run export                    # PDF (needs playwright-chromium, already a dev dependency)
 npx slidev export --format png --output preview   # one PNG per slide, for review
-npx tahta-lint slides.md          # check the deck against the theme's layout contract
+npx tahta-lint pages/04-tooling.md   # check one chapter against the theme's layout contract
 ```
 
+- `slides.md` holds only the deck settings and the cover; each chapter is a file under `pages/`,
+  pulled in with a `src:` slide, in order: `00-opening`, `01-intermediary`, `02-cheating`,
+  `03-structure`, `04-tooling`, `05-self-iteration`, `06-lessons`, `07-closing`. A chapter file is a
+  run of slides, each starting with its own `---` frontmatter block. To add a chapter, create the
+  file and add a `src:` slide for it in `slides.md`.
 - The deck uses [tahta](https://tahta.cagdas.io) (`slidev-theme-tahta`) in its `brutalist` variant.
   Slides pick a tahta `layout` and fill its frontmatter; there is no custom slide styling. The
   theme's contract is `node_modules/slidev-theme-tahta/AGENTS.md`.
