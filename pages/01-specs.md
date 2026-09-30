@@ -21,6 +21,7 @@ points:
 <!--
 protocol/README.md: "the specification is one graph of declared nodes and relations, from which read sets, write sets, views and checks are computed."
 Version 15.1 (Sep 30): no required entry sections; recommended order purpose → core concepts → overview → details.
+Version 16.0 (Sep 30): pending realization entries dropped.
 -->
 
 ---
