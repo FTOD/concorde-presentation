@@ -1,7 +1,7 @@
 ---
 layout: section
-index: "05"
-kicker: Part five
+index: "06"
+kicker: Part six
 title: Agents improving Concorde
 subtitle: Issues, tracing, dogfooding
 ---

@@ -1,15 +1,15 @@
 ---
 layout: section
-index: "03"
-kicker: Part three
+index: "04"
+kicker: Part four
 title: Structure as a signal
 subtitle: What a bounded task says about the architecture
 ---
 
 ---
 layout: bigtype
-kicker: The test
-title: Done with <em>only what it needs</em>? Honest work — and a sound split.
+title: Succeeds with <em>only what it needs</em>?
+subtitle: Then the agent didn't cheat — and the project's Module split is largely sound.
 ---
 
 <!--

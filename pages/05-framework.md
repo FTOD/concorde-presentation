@@ -1,9 +1,9 @@
 ---
 layout: section
-index: "04"
-kicker: Part four
-title: Agent-based tooling
-subtitle: Many sessions, many tasks, no waiting
+index: "05"
+kicker: Part five
+title: An agent-based framework
+subtitle: Putting it together — from task management down to workers
 ---
 
 ---

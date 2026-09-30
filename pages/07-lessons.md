@@ -1,7 +1,7 @@
 ---
 layout: section
-index: "06"
-kicker: Part six
+index: "07"
+kicker: Part seven
 title: What I learned
 subtitle: About Claude Code, pi, and building with agents
 ---

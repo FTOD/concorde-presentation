@@ -2,3 +2,13 @@
    except sizing for the D2 diagrams rendered by setup/transformers.ts. */
 .d2-diagram { width: 100%; display: flex; justify-content: center; }
 .d2-diagram > img { width: 100%; height: 100%; object-fit: contain; }
+
+/* Feature cards: every card fills its grid cell and every row has the same height.
+   (tahta wraps each card in a Reveal element, which the grid stretches instead of the card.) */
+.feature { grid-auto-rows: 1fr; }
+.feature > * { display: flex; }
+.feature > * > .feature-cell { flex: 1; }
+/* `class: tight` on a feature slide: smaller cards, for six or more. */
+.tight .feature-cell { padding: 0.9rem 1.1rem; }
+.tight .feature-title { font-size: 1.15rem; }
+.tight .feature-desc { font-size: 0.85rem; }
