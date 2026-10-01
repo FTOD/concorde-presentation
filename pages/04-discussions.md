@@ -1,15 +1,12 @@
 ---
 layout: section
-index: "05"
-kicker: Part five
+index: "04"
 title: Discussions
 ---
 
 ---
 layout: diagram
-kicker: Agent orchestration today
 title: Harnesses and frameworks are <em>converging</em>
-note: You should start building your loop/graph
 ---
 
 ```d2 {h: 250, layout: elk}
@@ -40,9 +37,7 @@ is not its own process, so it cannot get an OS-level sandbox of its own. That is
 
 ---
 layout: diagram
-kicker: Closing the gap
 title: Independent sessions, <em>talking to each other</em>
-note: Each session is its own process with its own OS sandbox; cross-session messaging connects them. When a delivered task is merged and closed, Concorde removes its sessions itself — the list never gets noisy.
 ---
 
 ```d2 {h: 300}
@@ -76,7 +71,6 @@ d4b64e8e: task sessions use auto mode; bypassPermissions in a background session
 
 ---
 layout: feature
-kicker: AI rarely achieves what you really want in one round
 title: <em>Observability</em> is what makes it possible
 columns: 3
 features:
@@ -112,7 +106,6 @@ Concorde can improve itself because it can see itself.
 
 ---
 layout: define
-kicker: Long-running autonomy
 term: Autonomy is triage
 definition: Know what AI can settle <span class="accent2">on its own</span> — and when it must stop and ask you.
 points:
@@ -134,7 +127,6 @@ And a long run is not a good run by itself — "the AI worked all night" says no
 
 ---
 layout: diagram
-kicker: You are accumulating non-determinism
 title: Building with AI · don't let AI decide the entire architecture
 note: "AI did not realize that i was on the wrong path"
 ---
@@ -153,7 +145,7 @@ p1: "Aug 19 – Sep 1\n14 days · 89 commits\n152k lines\n14% alive" {class: rej
 p2: "Sep 2 – 11\n10 days · 218 commits\n167k lines\n2% alive" {class: rejected; width: 400; height: 260; style.font-size: 30}
 p3: "Sep 12 – 23\n12 days · 175 commits\n266k lines\n8% alive" {class: rejected; width: 480; height: 260; style.font-size: 30}
 p4: "Sep 24\n−87k" {class: program; width: 160; height: 260; style.font-size: 30}
-p5: "Sep 25 – 30\n6 days · 677 commits\n130k lines\n64% alive" {class: chosen; width: 400; height: 260; style.font-size: 30}
+p5: "Sep 25 – Oct 2\n8 days · 1113 commits\n148k lines\n64% alive" {class: chosen; width: 400; height: 260; style.font-size: 30}
 n1: "Spec Kit extension →\nstandalone; module specs" {class: note; width: 560; style.font-size: 26}
 n2: "Protocol v1 → v10;\nthree Module kinds → one" {class: note; width: 400; style.font-size: 26}
 n3: "LangGraph everywhere;\npi the only runtime" {class: note; width: 480; style.font-size: 26}
@@ -168,14 +160,14 @@ The core point: when AI builds a system whose parts are themselves AI, the non-d
 designs, the model that implements, the models that run inside. Mechanisms can be checked; architecture cannot. The
 architecture (what the parts are, how they split, which platform they run on) is where over-relying on AI costs the most —
 don't let AI decide it entirely.
-The evidence — most of the first five weeks was thrown away. "42 days" is the whole project, Aug 19 – Sep 30; "36" is Aug 19 – Sep 23.
+The evidence — most of the first five weeks was thrown away. "44 days" is the whole project, Aug 19 – Oct 2; "36" is Aug 19 – Sep 23.
 Work after the reset looks far more stable, though younger code has had less time to be replaced — the 2% vs 64% gap is too wide for that to explain.
-Counted with git blame at d4e06d98 over code, Specs, Protocol, prompts and docs (excluding vendored references,
+Counted with git blame at bea6631b (Oct 2) over code, Specs, Protocol, prompts and docs (excluding vendored references,
 generated files and tool output):
 - Aug 19 – Sep 23: 482 commits, 585k lines added, 46k (7.9%) still alive today.
   Aug 19 – Sep 1: 14% survive · Sep 2 – 11: 2% · Sep 12 – 23: 8%.
 - Sep 24 (the reset): 29 commits; 87k lines deleted in one commit (6b8e150e).
-- Sep 25 – 30: 677 commits, 130k lines added, 64% still alive.
+- Sep 25 – Oct 2: 1,113 commits, 148k lines added, 64% still alive.
 Direction changes behind the churn: a Spec Kit extension → standalone (Sep 2); module-centered specs (Sep 1, −47k lines);
 Domain/Service/Module kinds → one Module kind (Sep 6–9); 15 Protocol major versions; every orchestration a LangGraph flow
 (Sep 12–17) → removed (Sep 20–24); pi as the only runtime (Sep 15) → removed (Sep 24) → back as a worker backend (Sep 25).
@@ -185,14 +177,12 @@ is my judgment, not something the history records.
 
 ---
 layout: reference
-kicker: Takeaways for research
-title: What this means for <em>our</em> work
+title: The receipt
 items:
-  - { term: Not a cure-all, desc: "Concorde targets software engineering — and doesn't solve it perfectly" }
-  - { term: Research explores too, desc: "no concrete result to aim at up front — we find the way as we go" }
-  - { term: Split the work, desc: "“I know what and roughly how” → let AI loop · “I have a direction” → explore together, keep following up" }
-  - { term: Ask for evidence, desc: "never take an AI's conclusion at its word" }
-  - { term: Own the architecture, desc: "think, ask AI, and cut until each part's result is observable — then how AI got there doesn't matter" }
+  - { term: (History) Tracing and Errors, desc: "kinda like the long-term memory for RSI" }
+  - { term: More complex loops and controls, desc: "for better quality" }
+  - { term: Maximize parallelism to overcome the complexity, desc: "Agent OS" }
+  - { term: Don't trust AI too much, desc: "Control the architecture, ask for evidence" }
 ---
 
 <!--

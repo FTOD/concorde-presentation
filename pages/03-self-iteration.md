@@ -1,16 +1,13 @@
 ---
 layout: section
-index: "04"
-kicker: Part four
+index: "03"
 title: RSI with Concorde
 subtitle: Improving Concorde on real projects — and Concorde itself
 ---
 
 ---
 layout: diagram
-kicker: Concorde builds Concorde
 title: Concorde is developed <em>with Concorde</em>
-note: Concorde's own repository is a Concorde project. Every change is a task worked by a task session under its own Specs — so each merge is the next version building the one after it.
 ---
 
 ```d2 {h: 300}
@@ -39,30 +36,28 @@ RSI = recursive self-improvement: Concorde improves itself with itself, and from
 
 ---
 layout: stats
-kicker: By the numbers
 title: Six weeks, mostly by its own tasks
 stats:
-  - { value: 1188, label: commits in 42 days, icon: "lucide:git-branch" }
-  - { value: 222, label: tasks delivered, icon: "lucide:check" }
-  - { value: 653, unit: k, label: lines of code changed, icon: "lucide:code" }
-  - { value: 1.4, unit: GB, label: of agent logs, icon: "lucide:scroll-text" }
+  - { value: 1624, label: commits in 44 days, icon: "lucide:git-branch" }
+  - { value: 243, label: tasks delivered, icon: "lucide:check" }
+  - { value: 667, unit: k, label: lines of code changed, icon: "lucide:code" }
+  - { value: 1.6, unit: GB, label: of agent logs, icon: "lucide:scroll-text" }
 ---
 
 <!--
-Counted at concorde d4e06d98 (Sep 30), history Aug 19 – Sep 30:
-- 1,188 commits; 222 "concorde: deliver" commits (delivered tasks); 203 decision logs committed; 8 Issues.
-- Code: +368k / −284k = 653k lines changed in Python, TypeScript, JavaScript and shell, excluding generated/, references/
-  (vendored docs and sources) and tool output. The code today is about 84k lines. Specs and Protocol: another 513k lines changed.
-- Logs: 1.19 GB of Claude Code session transcripts (main session + task sessions) and 212 MB of Concorde's own records
+Counted at concorde bea6631b (Oct 2), history Aug 19 – Oct 2:
+- 1,624 commits; 243 "concorde: deliver" commits (delivered tasks); 226 decision logs committed; 183 Issues.
+- Code: +379k / −288k = 667k lines changed in Python, TypeScript, JavaScript and shell, excluding generated/, references/
+  (vendored docs and sources) and installed tool output (.agents/); renamed files counted. The code today is about 91k lines.
+  Specs and Protocol: another 520k lines changed.
+- Logs: 1.26 GB of Claude Code session transcripts (main session + task sessions) and 312 MB of Concorde's own records
   (.concorde/history, unbound runs, decision logs: traces, worker transcripts, check logs). Older transcripts may already have
   been pruned, so this is a floor.
 -->
 
 ---
 layout: diagram
-kicker: Dogfooding
 title: Use it on a real project, <em>let it report</em>
-note: The project's main agent only observes and reports; every fix is ordinary work in the Concorde repository, and the project takes it with an update.
 ---
 
 ```d2 {h: 300}
@@ -81,12 +76,10 @@ specs/concorde/dogfooding/module.md. E2E runs installed Concorde on SWE-bench re
 
 ---
 layout: columns
-kicker: The feedback loop
 title: What makes self-improvement possible
 columns:
-  - { title: Issues, items: ["Automatic Reports: bug · gap · limitation", "Recording never stops the work"] }
-  - { title: Tracing, items: ["Every step: task → session → run → worker round", "Tokens, cost, time and model of each", "Transcripts, grants, check logs, error chains"] }
-  - { title: Dogfooding & E2E, items: ["Develop installs on real projects", "SWE-bench repositories, real agents", "Plant a known bug — check the agent reports it, not works around it"] }
+  - { title: Tracing & Issue management, items: ["Every step: task → session → run → worker round", "Tokens, cost, time and model of each", "Transcripts, grants, check logs, error chains", "Dedicated Issue system for continous improving"] }
+  - { title: Dogfooding & E2E, items: ["Develop installs on real projects", "SWE-bench repositories, real agents"] }
 ---
 
 <!--

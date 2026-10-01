@@ -1,6 +1,5 @@
 ---
 layout: feature
-kicker: The problems
 title: When we develop with AIs...
 class: tight
 columns: 3

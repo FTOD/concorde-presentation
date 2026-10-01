@@ -1,16 +1,12 @@
 ---
 layout: section
-index: "03"
-kicker: Part three
-title: An agent-based framework
-subtitle: Make Concorde actually usable with AI tools
+index: "02"
+title: "Concorde: an agent-based coding framework"
 ---
 
 ---
 layout: diagram
-kicker: Five levels of work
 title: Agents at both ends, <em>programs</em> between
-note: Calls go down, results and errors come up. A judgment never passes from one model to another without a program checking it.
 ---
 
 ```d2 {h: 300}
@@ -48,7 +44,6 @@ understanding the developer, and doing one bounded job. Everything between is re
 
 ---
 layout: diagram
-kicker: Main sessions and tasks
 title: As architect, we don't like <em>bubbles</em>
 ---
 
@@ -100,7 +95,6 @@ Nobody waits:
 
 ---
 layout: diagram
-kicker: Why LangGraph — determinism
 title: Three loops, <em>one graph</em> each
 note: "Deterministic control flow: code picks every next step from what the host checked — never a model. Every loop is bounded."
 ---
@@ -175,25 +169,57 @@ which a later version can checkpoint and resume." Workflows run their steps as s
 -->
 
 ---
-layout: vs
-kicker: Why not a workflow everywhere?
+layout: default
 title: Workflows run on <em>subagents</em>
-left:
-  title: Workflow · subagents
-  items:
-    - Claude Code workflows and pi subagents both run steps as subagents
-    - Subagents share the session's process — no OS sandbox of their own
-    - Fine when no isolation is needed — ordering a few Operations
-    - e.g. brownfield adoption; step agents only relay each step
-right:
-  title: LangGraph · separate processes
-  items:
-    - Runs in Concorde's own Python process
-    - Every worker is its own claude -p / pi -p process
-    - Each gets an OS-level sandbox built from its grant
-    - Used everywhere workers need isolation
-label: vs
 ---
+
+```d2 {h: 150}
+direction: right
+cc: "Claude Code" {
+  class: layer
+  style: {stroke: "#3d3d3d"; font-color: "#6b6b66"}
+  direction: right
+  main: "Main\nsession" {style: {fill: "#0c0c0c"; stroke: "#3d3d3d"; font-color: "#6b6b66"; border-radius: 0}}
+  ts: "Task\nsession" {style: {fill: "#0c0c0c"; stroke: "#3d3d3d"; font-color: "#6b6b66"; border-radius: 0}}
+  main -> ts
+}
+mid: "programs" {
+  class: layer
+  wf: Workflow {class: chosen}
+  op: "Run\n(Operation)" {class: chosen}
+  wf -> op
+}
+pi: "pi or Claude Code" {
+  class: layer
+  style: {stroke: "#3d3d3d"; font-color: "#6b6b66"}
+  w: "Workers" {style: {fill: "#0c0c0c"; stroke: "#3d3d3d"; font-color: "#6b6b66"; border-radius: 0}}
+}
+cc.ts -> mid.wf
+mid.op -> pi.w: grant
+pi.w -> mid.op: claim
+```
+
+<div class="vs">
+  <div class="vs-side a">
+    <div class="vs-head">Workflow · subagents</div>
+    <ul>
+      <li>Claude Code workflows and pi subagents both run steps as subagents</li>
+      <li>Subagents share the session's process — no OS sandbox of their own</li>
+      <li>Fine when no isolation is needed — ordering a few Operations</li>
+      <li>e.g. brownfield adoption; step agents only relay each step</li>
+    </ul>
+  </div>
+  <div class="vs-div">vs</div>
+  <div class="vs-side b">
+    <div class="vs-head">LangGraph · separate processes</div>
+    <ul>
+      <li>Runs in Concorde's own Python process</li>
+      <li>Every worker is its own claude -p / pi -p process</li>
+      <li>Each gets an OS-level sandbox built from its grant</li>
+      <li>Used everywhere workers need isolation</li>
+    </ul>
+  </div>
+</div>
 
 <!--
 The main reason Concorde does not build on workflows: a workflow's steps are subagents (Claude Code's workflows, pi's
@@ -206,22 +232,56 @@ specs/concorde/execution/workflows/module.md: a workflow is "rendered as a Claud
 -->
 
 ---
-layout: vs
-kicker: The split we landed on
+layout: default
 title: Claude Code leads, pi works
-left:
-  title: Claude Code for main agent (user-face)
-  items:
-    - Background sessions and messages between them
-    - Built for a long interactive session
-    - "pi has neither: task sessions had to be rounds"
-right:
-  title: pi for workers
-  items:
-    - Extensions see every tool call — and explain each denial
-    - Any provider, local models, a model per worker
-    - Pinned in workers.json, alike for everyone
 ---
+
+```d2 {h: 150}
+direction: right
+cc: "Claude Code" {
+  class: layer
+  style: {stroke: "#35e0f1"; font-color: "#35e0f1"}
+  direction: right
+  main: "Main\nsession" {class: agent}
+  ts: "Task\nsession" {class: agent}
+  main -> ts
+}
+mid: "programs" {
+  class: layer
+  style: {stroke: "#3d3d3d"; font-color: "#6b6b66"}
+  wf: Workflow {style: {fill: "#0c0c0c"; stroke: "#3d3d3d"; font-color: "#6b6b66"; border-radius: 0}}
+  op: "Run\n(Operation)" {style: {fill: "#0c0c0c"; stroke: "#3d3d3d"; font-color: "#6b6b66"; border-radius: 0}}
+  wf -> op
+}
+pi: "pi or Claude Code" {
+  class: layer
+  style: {stroke: "#c8f135"; font-color: "#c8f135"}
+  w: "Workers" {class: agent}
+}
+cc.ts -> mid.wf
+mid.op -> pi.w: grant
+pi.w -> mid.op: claim
+```
+
+<div class="vs">
+  <div class="vs-side a">
+    <div class="vs-head">Claude Code for main agent (user-face)</div>
+    <ul>
+      <li>Background sessions and messages between them</li>
+      <li>Built for a long interactive session</li>
+      <li>pi has neither: task sessions had to be rounds</li>
+    </ul>
+  </div>
+  <div class="vs-div">vs</div>
+  <div class="vs-side b">
+    <div class="vs-head">pi for workers</div>
+    <ul>
+      <li>Extensions see every tool call — and explain each denial</li>
+      <li>Any provider, local models, a model per worker</li>
+      <li>Open-source, high customizability</li>
+    </ul>
+  </div>
+</div>
 
 <!--
 Why this split (merged from the former "pi's toolbox" slide):
